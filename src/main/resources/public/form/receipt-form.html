@@ -1,0 +1,123 @@
+<form name="form.receiptForm" class="form-horizontal" novalidate>
+	<div class="col-sm-6">
+		<div class="form-group">
+	    	<div class="col-sm-12">
+	    		<div class="input-group" show-errors="{ showSuccess: true }">
+		         	<span class="input-group-addon"><i class="fa fa-bookmark input-control-icon"></i></span>		         	
+		         	<select id="supplier" name="supplier" title="Supplier Name" class="selectpicker show-tick form-control" 
+		         		data-live-search="true" 
+		    			ng-model="current.supplier" 
+		    			ng-options="supplier.name for supplier in suppliers track by supplier.id" 
+    					ng-change="query.property_name=supplier.name; start();" autofocus required>
+    					<option value="" title="Supplier Name" disabled>-</option>								
+					</select>					
+					<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>	  
+				</div>					
+	    	</div>
+	  	</div>
+		<div class="form-group">
+			<div class="col-sm-3">
+	    		<div class="input-group" show-errors="{ showSuccess: true }">
+		         	<span class="input-group-addon"><i class="fa fa-puzzle-piece input-control-icon"></i></span>
+		    		<select id="part" name="part" title="Part" class="selectpicker show-tick form-control selectpicker_default_bg" 
+		    			ng-model="entry.part" 
+		    			ng-options="part.name for part in parts track by part.id" 
+    					ng-change="query.property_name=part.name" required>    
+    					<option value="" title="Part" disabled>-</option>					 
+					</select> 
+					<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>
+				</div>						
+	    	</div>			
+	    	<!-- <div class="col-sm-3">
+	    		<div class="input-group" show-errors="{ showSuccess: true }">
+		         	<span class="input-group-addon"><i class="fa fa-puzzle-piece input-control-icon"></i></span>
+		    		<select id="part" name="part" title="Part" class="selectpicker show-tick form-control selectpicker_default_bg" 
+		    			ng-model="entry.part" 
+		    			ng-options="key as val for (key, val) in parts" 
+    					ng-change="query.property_name=key" required>    
+    					<option value="" title="Part" disabled>-</option>					 
+					</select> 
+					<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>
+				</div>						
+	    	</div> -->
+		    <div class="col-sm-4">
+	    		<div class="input-group" show-errors="{ showSuccess: true }">
+		         	<span class="input-group-addon"><i class="fa fa-pencil input-control-icon"></i></span>
+		    		<select id="description" name="description" title="Description" class="selectpicker show-tick form-control selectpicker_default_bg" 
+		    			data-live-search="true" 
+		    			ng-model="entry.description" 
+		    			ng-options="description.text for description in descriptions track by description.id" 
+    					ng-change="query.property_name=description.text" required>    
+    					<option value="" title="Description" disabled>-</option>					 
+					</select> 
+					<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>
+				</div>						
+	    	</div>
+	    	<div class="col-sm-5">
+				<div class="input-group" show-errors="{ showSuccess: true }">
+		         	<span class="input-group-addon"><i class="glyphicon glyphicon-barcode input-control-icon"></i></span>
+		         	<input type="text" class="form-control" id="rollNumber" name="rollNumber" title="Roll Number" placeholder="Roll Number" ng-model="entry.rollNumber" required>
+		         	<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>
+		      	</div>		      	
+		    </div>			    
+		</div>       					
+	  	<div class="form-group">
+	    	<div class="col-sm-12">
+	    		<div class="input-group">
+		         	<span class="input-group-addon"><i class="fa fa-comments input-control-icon"></i></span>
+		         	<input class="form-control"id="remarks" name="remarks" placeholder="Remarks" rows="5" maxlength="1000" ng-model="entry.remarks">        	
+		      	</div>
+	    	</div>
+	  	</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="form-group">
+	    	<div class="col-sm-4">
+	    		<div class="input-group" show-errors="{ showSuccess: true }">
+		         	<span class="input-group-addon"><i class="fa fa-flask input-control-icon"></i></span>
+		         	<input type="number" class="form-control" id="grade" name="grade" placeholder="Grade (GSM)" title="Grade (GSM)" ng-model="entry.grade" required>
+		         	<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>
+		      	</div>		      	
+	    	</div>
+	    	<div class="col-sm-4">
+	    		<div class="input-group" show-errors="{ showSuccess: true }">
+		         	<span class="input-group-addon"><i class="fa fa-scissors input-control-icon"></i></span>
+		         	<input type="number" class="form-control" id="sized" name="sized" placeholder="Sized (Trim)" title="Sized (Trim)" ng-model="entry.sized" required>
+		         	<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>
+		      	</div>		      
+	    	</div>
+	    </div>	
+	  	<div class="form-group">
+	    	<div class="col-sm-4">
+	    		<div class="input-group" show-errors="{ showSuccess: true }">
+		         	<span class="input-group-addon"><i class="fa fa-balance-scale input-control-icon"></i></span>
+		         	<input type="number" class="form-control" id="weight" name="weight" placeholder="Weight (Kg)" title="Weight (Kg)" ng-model="entry.weight" required>
+		         	<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>
+		      	</div>		      	
+	    	</div>
+	    	<div class="col-sm-4">
+	    		<div class="input-group">
+		         	<span class="input-group-addon"><i class="fa fa-code input-control-icon"></i></span>
+		         	<input type="text" class="form-control" id="lineal" name="lineal" placeholder="Lineal" title="Lineal" ng-model="entry.lineal">
+		      	</div>
+	    	</div>	    		    	
+	  	</div>	  	
+	</div>	
+	<div class="col-lg-8">
+		<button type="button" class="btn btn-primary" ng-disabled="form.receiptForm.$invalid" ng-click="update(entry);" ng-show="isEdit"><i class="fa fa-floppy-o input-control-icon"></i> Update</button>
+    	<button type="button" class="btn btn-primary" ng-disabled="form.receiptForm.$invalid" ng-click="addToList();" ng-show="!isEdit"><i class="fa fa-arrow-down input-control-icon"></i> Add to List</button>
+    	<button type="button" class="btn btn-info" ng-disabled="entries != undefined && entries.length == 0" ng-click="saveAndNew();" ng-show="!isEdit"><i class="fa fa-chevron-right input-control-icon"></i> Save & New</button>
+    	<!-- <button type="button" class="btn btn-info" ng-disabled="form.receiptForm.supplier.$invalid" ng-click="save();" ng-show="!isEdit"><i class="fa fa-floppy-o input-control-icon"></i> Save</button> -->
+    	<button type="button" class="btn" ng-disabled="form.receiptForm.supplier.$invalid" ng-click="resetForm();"><i class="fa fa-refresh input-control-icon"></i> Reset Form</button>
+    	<button type="button" class="btn btn-default" ng-disabled="form.receiptForm.supplier.$invalid" ng-click="cancel();"><i class="fa fa-ban input-control-icon"></i> Cancel</button>
+    	<button type="button" class="btn btn-default" ng-click="close();"><i class="fa fa-sign-out input-control-icon"></i> Close</button>
+    	<button id="catchAllBtn" ng-show="false">asd</button>
+    	<!-- <button type = "button" class = "btn btn-success pull-right"><i class="fa fa-check input-control-icon"></i> Accept Entry</button> -->
+    </div>	 
+    <div class="col-lg-4">
+    	<span class="pull-right"><i class="fa fa-asterisk required-icon"></i> Required field</span>
+    </div>		 	
+</form>
+
+<script type="text/javascript"  src="/js/default/init-form-controls.js"></script>	
+

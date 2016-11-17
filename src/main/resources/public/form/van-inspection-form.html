@@ -1,0 +1,52 @@
+<form name="form.vanInspectionForm" class="form-horizontal" novalidate>
+	<div class="form-group" show-errors="{ showSuccess: true }">
+    	<div class="col-sm-12">
+   		 	<div class="input-group">
+	         	<span class="input-group-addon"><i class="fa fa-truck input-control-icon"></i></span>		         	
+	         	<select id="trucker" name="trucker" title="Trucker Name" class="selectpicker show-tick form-control" 
+	         		data-live-search="true" 
+	    			ng-model="vanInspection.trucker" 
+	    			ng-options="trucker.name for trucker in truckers track by trucker.id" 
+   					ng-change="query.property_name=trucker.name; start();" autofocus required>
+   					<option value="" title="Trucker Name" disabled>-</option>								
+				</select>					
+				<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>	  
+			</div>	
+			<span ng-show="form.vanInspectionForm.trucker.$touched && form.vanInspectionForm.trucker.$invalid" class="error-msg">Required field</span>
+      	</div>
+  	</div>
+  	<div class="form-group" show-errors="{ showSuccess: true }">
+    	<div class="col-sm-12">
+    		<div class="input-group">
+    			<span class="input-group-addon"><i class="fa fa-tag input-control-icon"></i></span>
+	         	<input id="truckNumber" type="text" class="form-control" name="truckNumber" placeholder="Truck Number" 
+	         		title="Truck Number" ng-model="vanInspection.truckNumber" required>	  
+	         	<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>		       	
+	      	</div>	   
+	      	<span ng-show="form.vanInspectionForm.truckNumber.$touched && form.vanInspectionForm.truckNumber.$invalid" class="error-msg">Required field</span>   	
+    	</div>      		
+  	</div>  
+  	<div class="form-group" show-errors="{ showSuccess: true }">
+  		<div class="col-sm-12">
+    		<div class="input-group">
+    			<span class="input-group-addon"><i class="fa fa-tag input-control-icon"></i></span>
+	         	<input type="text" class="form-control" name="vanNumber" placeholder="Van Number" 
+	         		title="Van Number" ng-model="vanInspection.vanNumber" required>	  
+	         	<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>		       	
+	      	</div>	   
+	      	<span ng-show="form.vanInspectionForm.vanNumber.$touched && form.vanInspectionForm.vanNumber.$invalid" class="error-msg">Required field</span>   	
+    	</div>    
+    </div>	  
+    <div class="form-group" show-errors="{ showSuccess: true }">
+    	<div class="col-sm-12">
+    		<div class="input-group">
+	         	<span class="input-group-addon"><i class="fa fa-map-marker input-control-icon"></i></span>
+	         	<textarea class="form-control" name="remarks" placeholder="Remarks" title="Inspection Remarks" rows="5" maxlength="1000" ng-model="vanInspection.remarks" required></textarea>
+	         	<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>	         	
+	      	</div>
+	      	<span ng-show="form.vanInspectionForm.vanNumber.$touched && form.vanInspectionForm.vanNumber.$invalid" class="error-msg">Required field</span>
+    	</div>
+  	</div>
+</form>
+
+<script type="text/javascript"  src="/js/default/init-form-controls.js"></script>	

@@ -1,0 +1,173 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header content-title"><i class="glyphicon glyphicon-equalizer"></i> Roll Storage</h1>
+    </div>
+</div>
+<div class="row" style="padding-top: 20px;">
+	<div class="col-lg-12">
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs">
+        <li class="active"><a href ng-click="tab = 1" data-toggle="tab"><i class="fa fa-braille fa-fw"></i> Rolls For Storage</a>
+        </li>
+        <li><a href ng-click="tab = 2" data-toggle="tab"><i class="fa fa-connectdevelop fa-fw"></i> Bin Allocations</a>
+        </li>        
+    </ul>
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<div id="rolls" class="tab-pane fade in active" ng-show="tab == 1">
+			<div class="row">
+				<div class="col-lg-12">
+					<table id="forStorageTable" datatable="ng" dt-instance="dtInstance" width="100%" class="table table-striped table-bordered table-hover">
+						 <thead>
+				         	<tr>
+				         		<th colspan="10" style="text-align:center">Roll Information</th>
+				         		<th colspan="3" style="text-align:center">Available Location</th>
+				         	</tr>
+				         	<tr> 
+				         		<th>Supplier</th>                
+				               	<th>Description</th>
+				               	<th>Date Received</th>
+				                <th>Part</th>
+				                <th>Ticket #</th>
+				                <th>Roll #</th>
+				                <th>GSM</th>
+				                <th>Trim</th>
+				                <th>Weight (Kg)</th>
+				                <th>Lineal</th>
+				                <th>Warehouse</th>
+				                <th>Bin</th>
+				                <th>Action</th>
+				       		</tr>
+						</thead>
+				        <tbody>    
+				        	<tr ng-repeat="roll in rollsForStorage">
+				        		<td>{{ roll.receipt.supplier.name }}</td>
+				        		<td>
+				        			{{ roll.description.text }}	
+				        			<div class="text-muted small">{{ entry.remarks }}</div>        		
+				        		</td>
+				        		<td>{{ roll.receipt.dateCreated | date : 'short' }}</td>
+				        		<td>{{ roll.part.name }}</td>
+				        		<td>{{ ('00000' + roll.ticket.id).slice(-6) }}</td>
+				        		<td>{{ roll.number }}</td>
+				        		<td>{{ roll.grade | number }}</td>
+				        		<td>{{ roll.sized | number }}</td>
+				        		<td>{{ roll.weight | number }}</td>	        		
+				        		<td>{{ roll.lineal | number }}</td>
+				        		<td>				        		
+				        			<select id="warehouse{{ $index }}" title="Warehouse" class="selectpicker show-tick form-control" 
+						         		data-live-search="true" 
+						    			ng-model="roll.warehouse" 
+						    			ng-options="warehouse.name for warehouse in warehouses track by warehouse.id" 
+				    					ng-change="query.property_name = warehouse.name; filterBins($index, roll);">
+				    					<option value="" title="Warehouse Name" disabled>-</option>								
+									</select>		
+				        		</td>
+				        		<td>
+				        			<select id="bin{{ $index }}" title="Bin" class="selectpicker show-tick form-control" 
+						         		data-live-search="true" 
+						    			ng-model="roll.bin" 
+						    			ng-options="bin.name for bin in roll.bins track by bin.id" 
+				    					ng-change="query.property_name = bin.name;" 
+				    					ng-disabled="roll.warehouse == undefined || roll.bins.length == 0">
+				    					<option value="" title="Bin Name" disabled>-</option>								
+									</select>
+				        		</td>
+				        		<td>
+					               <button type="button" class="btn btn-default btn-sm custom-button-default" title="Set Location" 
+					               ng-disabled="roll.warehouse == undefined || roll.bins.length == 0" 
+					               ng-click="setLocation($index, roll);"> 
+					                	<i class="fa fa-street-view"></i>
+					               </button>
+				               </td>
+				        	</tr>   	        	   
+				       </tbody>			       
+				       </table>
+				</div>
+			</div>	
+		</div>
+		<div id="location" class="tab-pane fade in active" ng-show="tab == 2">
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="custom-list-clear">
+						<li ng-repeat="warehouse in warehouses">
+							<div class="panel panel-info">								
+						    	<div class="panel-heading" style="font-weight: bold;">
+						        	<i class="fa fa-home fa-fw"></i> {{ warehouse.name }}  <span class="badge">{{ warehouse.bins.length }}</span>
+						        	<button class="btn btn-info btn-xs pull-right" 
+						        		data-toggle="collapse" data-target="#content{{ $index }}" 
+						        		title="Show/hide Bins">
+						        		<i class="fa fa-eye-slash fa-fw"></i>
+						        	</button>
+								</div>
+								<div id="content{{ $index }}" class="panel-body collapse">
+							    	<table id="binTable" datatable="ng" dt-instance="dtInstance" width="100%" class="table table-striped table-bordered table-hover">
+									<thead>										
+								       	<tr>                 
+								           	<th>Bin</th>	
+								           	<th>Content Details</th>								           	
+								        </tr>
+									</thead>
+									<tbody>
+								       	<tr ng-repeat="bin in warehouse.bins">  
+								       		<td>
+								       			{{ bin.name }}
+								       			<div class="text-muted small"><em>Dimensions: {{ bin.length | number }} x {{ bin.width | number }} x {{ bin.height | number }}</em></div>
+								       		</td>
+							                <td>
+							                	<table id="binContentTable" datatable="ng" dt-instance="dtInstance" width="100%" class="table table-striped table-bordered table-hover">
+							                		<thead>
+							                			<th>Description</th>
+							                			<th>Part</th>
+							                			<th>Ticket #</th>
+							                			<th>Roll #</th>
+							                			<th>GSM</th>
+							                			<th>Trim</th>
+							                			<th>Weight (Kg)</th>
+							                			<th>Lineal</th>
+							                			<th>Check-In Date</th>
+							                			<th>Check-In By</th>
+							                			<th>Action</th>
+							                		</thead>
+							                		<tbody>
+							                			<tr ng-repeat="roll in bin.rolls">
+							                				<td>
+							                					{{ roll.description.text }}
+							                					<div class="text-mute small"><em>{{ roll.description.details }}</em></div>
+							                				</td>
+							                				<td>{{ roll.part.name }}</td>
+											        		<td>{{ ('00000' + roll.ticket.id).slice(-6) }}</td>
+											        		<td>{{ roll.number }}</td>
+											        		<td>{{ roll.grade | number }}</td>
+											        		<td>{{ roll.sized | number }}</td>
+											        		<td>{{ roll.weight | number }}</td>	        		
+											        		<td>{{ roll.lineal | number }}</td>
+											        		<td>{{ roll.storage.checkInDate | date : 'short' }}</td>
+											        		<td>{{ roll.storage.checkInBy.name}}</td>
+											        		<td>
+												               	<button type="button" class="btn btn-default btn-sm" title="Change Bin" ng-click="edit($index, entry)"> 
+												                	<i class="fa fa-chain-broken"></i>
+												               	</button>		                                	                   	
+												               	<button type="button" class="btn btn-default btn-sm" title="Remove from Bin" ng-click="removeFromLocation(roll);"> 
+												                	<i class="fa fa-times delete-color"></i>
+												               	</button>
+									              		   	</td>
+							                			</tr>
+							                		</tbody>
+							                	</table>
+							                </td>							                
+								    	</tr>
+									<tbody>
+								</table>					        	
+						        </div>
+							</div>
+						</li>	
+				</div>	
+			</div>			        	
+		</div>
+     </div>
+	</div>
+</div>
+
+<script type="text/javascript"  src="/js/default/storage.js"></script>	
+<script type="text/javascript"  src="/js/default/init-form-controls.js"></script>	

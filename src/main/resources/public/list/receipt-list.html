@@ -1,0 +1,51 @@
+<div class="row">
+	<div class="col-lg-12">
+		<div class="input-group custom-search-form" style="width: 25% !important;">
+	      	<input type="text" id="searchInput" class="form-control" placeholder="Search..."/>
+	         <span class="input-group-btn">
+	          	<button id="clearSearchBtn" class="btn btn-default" type="button" title="clear">
+	           	<i class="fa fa-times"></i>
+	          	</button>
+	     	</span>
+		</div>	
+	</div>	    
+</div> 
+<div class="row">
+	<div class="col-lg-12" ng-controller="ReceivingController">
+		<table id="itemTable" datatable="ng" width="100%" class="table table-striped table-bordered table-hover">
+			 <thead>
+	               <tr>                 
+	               	   <th>Supplier</th>
+	                   <th>Description</th>
+	                   <th>Part</th>
+	                   <th>GSM</th>
+	                   <th>Trim</th>
+	                   <th>Weight (Kg)</th>
+	                   <th>Form</th>
+	                   <th>Quantity</th>
+	                   <th>Action</th>
+	               </tr>
+			</thead>
+	        <tbody>    
+	        	<tr ng-repeat="roll in rolls">
+	        		<td>Varkaus</td>
+	        		<td>SCM</td>
+	        		<td>Body</td>
+	        		<td>200</td>
+	        		<td>2100</td>
+	        		<td>145,482</td>
+	        		<td>Whole</td>
+	        		<td>60</td>
+	        		<td>
+		               <button type="button" class="btn btn-default btn-sm custom-button-default" title="Edit" ng-click="showRecord(item)"> 
+		                	<i class="fa fa-pencil"></i>
+		               </button>		                                	                   	
+		               <button type="button" class="btn btn-default btn-sm" title="Delete" ng-click="delete($index);"> 
+		                	<i class="fa fa-times delete-color"></i>
+		               </button>
+	               </td>
+	        	</tr>   	        	   
+	       </tbody>			       
+	       </table>
+	</div>
+</div>	

@@ -1,0 +1,105 @@
+<div class="navbar-default sidebar in" role="navigation" ng-controller="SideBarController">
+				<div class="sidebar-nav navbar-collapse">
+			    	<ul class="nav in" id="side-menu">
+			        	<li class="sidebar-search">
+			            	<div class="input-group custom-search-form">
+			                	<input type="text" class="form-control" placeholder="Search..."/>
+			                   	<span class="input-group-btn">
+				                   	<button class="btn btn-default" type="button">
+				                    	<i class="fa fa-search"></i>
+				                   	</button>
+			               		</span>
+			               </div>
+			        	</li>
+			        	<li>
+			            	<a href="#dashboard" ng-class="{ active: isActive('/dashboard') }"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+			        	</li>
+			        	<li>
+			            	<a href="#schedules" ng-class="{ active: isActive('/schedules') }"><i class="fa fa-calendar fa-fw"></i> Schedules</a>
+			        	</li>
+			        	<li>
+			            	<a href="#"><i class="fa fa-cubes fa-fw"></i> Stock<span class="fa arrow"></span></a>
+			            	<ul class="nav nav-second-level collapse">			            		
+					        	<li>
+			            			<a href="#inspection" ng-class="{ active: isActive('/inspection') }"><i class="fa fa-search fa-fw"></i> Inspection</a>
+			        			</li> 
+			            		<li>
+			            			<a href="#receiving" ng-class="{ active: isActive('/receiving') }"><i class="fa fa-download fa-fw"></i> Receiving</a>
+			        			</li> 			            		
+			        			<li>
+			            			<a href="#storage" ng-class="{ active: isActive('/storage') }"><i class="glyphicon glyphicon-equalizer"></i> Storage</a>
+			        			</li>
+					        	<li>
+			            			<a href="#issuance" ng-class="{ active: isActive('/issuance') }"><i class="fa fa-random fa-fw"></i> Issuance / Utilization</a>
+			        			</li>         			    
+					        	<li>
+			            			<a href="#monitoring" ng-class="{ active: isActive('/monitoring') }"><i class="fa fa-binoculars fa-fw"></i> Monitoring</a>
+			        			</li>			             
+				            </ul>
+			        	</li>
+				        <li>
+				            <a href="#delivery" ng-class="{ active: isActive('/delivery') }"><i class="fa fa-paper-plane fa-fw"></i> Shipment</a>
+				        </li>
+			        	<li>
+			            	<a href="#"><i class="fa fa-database fa-fw"></i> Masterfile<span class="fa arrow"></span></a>
+			            	<ul class="nav nav-second-level collapse">
+								<li>
+			            			<a href="#items" ng-class="{ active: isActive('/items') }"><i class="fa fa-braille fa-fw"></i> Items</a>
+			        			</li>   
+			        			<li>
+			            			<a href="#parts" ng-class="{ active: isActive('/parts') }"><i class="fa fa-puzzle-piece fa-fw"></i> Parts</a>
+			        			</li> 
+			        			<li>
+			            			<a href="#units" ng-class="{ active: isActive('/units') }"><i class="fa fa-tags fa-fw"></i> Units</a>
+			        			</li>          			    			
+				                <li>
+				                    <a href="#suppliers" ng-class="{ active: isActive('/suppliers') }"><i class="fa fa-balance-scale fa-fw"></i> Suppliers</a>
+				                </li>
+				                <li>
+				                    <a href="#customers" ng-class="{ active: isActive('/customers') }"><i class="fa fa-tty fa-fw"></i> Customers</a>
+				                </li>	
+				                <li>
+				                    <a href="#truckers" ng-class="{ active: isActive('/truckers') }"><i class="fa fa-truck fa-fw"></i> Truckers</a>
+				                </li>
+				                <li>
+				                    <a href="#locations" ng-class="{ active: isActive('/locations') }"><i class="fa fa-street-view fa-fw"></i> Locations</a>
+				                </li>		               
+				            </ul>
+				        </li>
+				        <li>
+				            <a href="#"><i class="fa fa-newspaper-o fa-fw"></i> Reports<span class="fa arrow"></span></a>
+				            <ul class="nav nav-second-level collapse">
+				                <li>
+				                    <a href="#">Report 1</a>
+				                </li>
+				                <li>
+				                    <a href="#">Report 2</a>
+				                </li>		
+				            </ul>
+				        </li>
+				        <li>
+				            <a href="#"><i class="fa fa-wrench fa-fw"></i> Utilities<span class="fa arrow"></span></a>
+				            <ul class="nav nav-second-level collapse">
+				                <li>
+				                    <a href="#">Tool 1</a>
+				                </li>
+				                <li>
+				                    <a href="#">Tool 2</a>
+				                </li>		
+				            </ul>
+				        </li>
+				        <li>
+				            <a href="#"><i class="fa fa-university fa-fw"></i> Administration<span class="fa arrow"></span></a>
+				            <ul class="nav nav-second-level collapse">
+				                <li>
+				                    <a href="#"><i class="fa fa-users fa-fw"></i> Users</a>
+				                </li>
+				                <li>
+				                    <a href="#"><i class="fa fa-bullhorn fa-fw"></i> Roles</a>
+				                </li>		
+				            </ul>
+				        </li>
+				        
+			    	</ul>
+				</div>
+			</div>

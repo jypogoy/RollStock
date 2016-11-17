@@ -1,0 +1,50 @@
+<form name="form.supplierForm" class="form-horizontal" novalidate>
+	<div class="form-group" show-errors="{ showSuccess: true }">
+    	<div class="col-sm-12">
+    		<div class="input-group">
+	         	<span class="input-group-addon"><i class="fa fa-bookmark input-control-icon"></i></span>
+	         	<input type="text" class="form-control" id="name" name="name" placeholder="Supplier Name" 
+	         		title="Supplier Name" ng-model="supplier.name" autofocus required>
+	         	<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>
+	      	</div>
+	      	<span ng-show="form.supplierForm.name.$touched && form.supplierForm.name.$invalid" class="error-msg">Required field</span>
+    	</div>
+  	</div>
+  	<div class="form-group">
+    	<div class="col-sm-12">
+    		<div class="input-group">
+    			<span class="input-group-addon"><i class="fa fa-at input-control-icon"></i></span>
+	         	<input type="email" class="form-control" name="email" placeholder="Email Address" 
+	         		title="Email Address" ng-model="supplier.email">	         	
+	      	</div>	      	
+    	</div>
+  	</div>
+  	<div class="form-group">
+    	<div class="col-sm-12">
+    		<div class="input-group">
+    			<span class="input-group-addon"><i class="fa fa-tablet input-control-icon"></i></span>
+	         	<input type="text" class="form-control" name="phoneMobile" placeholder="Mobile Number" 
+	         		title="Mobile Number" ng-model="supplier.phoneMobile">
+	      	</div>	      	
+    	</div>
+  	</div>
+  	<div class="form-group">
+    	<div class="col-sm-12">
+    		<div class="input-group">
+    			<span class="input-group-addon"><i class="fa fa-phone input-control-icon"></i></span>
+	         	<input type="text" class="form-control" name="phoneLandline" placeholder="Landline Number" 
+	         		title="Landline Number" ng-model="supplier.phoneLandline">
+	      	</div>	      	
+    	</div>
+  	</div>
+  	<div class="form-group">
+    	<div class="col-sm-12">
+    		<div class="input-group">
+	         	<span class="input-group-addon"><i class="fa fa-map-marker input-control-icon"></i></span>
+	         	<textarea class="form-control" placeholder="Address" title="Supplier Address" rows="5" maxlength="1000" ng-model="supplier.address"></textarea>	         	
+	      	</div>
+    	</div>
+  	</div>  	
+</form>
+
+<script type="text/javascript"  src="/js/default/init-form-controls.js"></script>	

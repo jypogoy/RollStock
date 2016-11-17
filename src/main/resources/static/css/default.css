@@ -1,0 +1,125 @@
+html, body { 
+	height: 100%; 
+	width: 100%; 
+	margin: 0; 
+}
+
+textarea {
+    resize: none;
+}
+
+/* tr th {
+	background: #6F8EB1 !important; For browsers that do not support gradients
+    background: -webkit-linear-gradient(#6F8EB1, white) !important; For Safari 5.1 to 6.0
+    background: -o-linear-gradient(#6F8EB1, white) !important; For Opera 11.1 to 12.0
+    background: -moz-linear-gradient(#6F8EB1, white) !important; For Firefox 3.6 to 15
+    background: linear-gradient(#6F8EB1, white) !important; Standard syntax
+} */
+
+.ng-view {
+	height: 100vh !important;
+}
+
+.search-control-wrapper {
+	padding: 0px;
+}
+
+.footer {
+	background-color: #F8F8F8;
+}
+
+.brand {
+	margin: 0;
+    padding: 0;
+}
+
+.brand li {
+	display: inline;
+}
+
+.icon {
+	color: #38b;
+}
+
+.custom-button-default {
+	color: #337AB7;
+}
+
+.content-title {
+	padding-top: 50px;
+}
+
+.search-box {
+	width: 25%;
+}
+
+.add-control-column {
+	text-align: right;
+	padding: 0px;
+}
+
+.required-icon {
+	font-size: 10px;
+	color: red;
+}
+
+.delete-color {
+	color: red;
+}
+
+.error-msg {
+	color: #BB6153;
+}
+
+.input-control-icon {
+	width: 12px;
+}
+
+.required:after {
+    content: "*";
+    padding-left:1%;
+    color:red;
+}
+
+.required-form-control{
+    width:97%;
+    float:left;
+}
+
+.form-group.required .control-label:after {
+  content:"*";
+  color:red;
+}
+
+.loading {
+	padding-top: 80px;
+	text-align: center;
+	display: none;
+}
+
+.text_note {
+	color: #777;
+	font-size: 9pt;
+}
+
+.list-inline {
+	display: inline;
+}
+
+.custom-list-clear {
+	list-style: none;
+	padding-left: 0;
+	padding-top: 20px;
+}
+
+.custom-text-green {
+	color:green;
+}
+
+.custom-text-lightgrey {
+	color:lightgrey;
+}
+
+.custom-text-center {
+	text-align: center;
+}

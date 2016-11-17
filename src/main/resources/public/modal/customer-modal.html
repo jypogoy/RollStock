@@ -1,0 +1,24 @@
+<div class="modal-header">
+   	<button type="button" class="close" ng-click="cancel()">&times;</button>
+   	<h4 class="modal-title">
+   		<i class="fa fa-tty fa-fw"></i> 
+   		<span ng-if="isNew==true">New</span>
+   		<span ng-if="isNew==false">Edit</span> 
+   		Customer
+   	</h4>
+</div>
+<div class="modal-body">
+   	<div ng-include="'/form/customer-form.html'"></div>
+</div>
+<div class="modal-footer">
+	<div class="col-sm-6 text-left">
+		<span><i class="fa fa-asterisk required-icon"></i> Required field</span>	    
+	</div>
+	<div class="col-sm-6">
+		<button type="button" class="btn btn-primary" ng-disabled="form.customerForm.$invalid" ng-click="save();">Save</button>
+		<span ng-if="isNew==true">
+			<button type="button" class="btn btn-default" ng-disabled="form.customerForm.$invalid" ng-click="saveAndNext();">Save & New</button>
+		</span>	
+	   	<button type="button" class="btn btn-default" ng-click="cancel();">Cancel</button>
+	</div>   	
+</div>

@@ -1,0 +1,46 @@
+<form name="form.collectionForm" class="form-horizontal" novalidate>
+	<div class="form-group" show-errors="{ showSuccess: true }">
+    	<div class="col-sm-12">
+    		<div class="input-group">
+	         	<span class="input-group-addon"><i class="fa fa-user input-control-icon"></i></span>
+	         	<input type="text" class="form-control" id="name" name="name" placeholder="Collection Name" 
+	         		title="Collection Name" ng-model="collection.name" autofocus required>
+	         	<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>
+	      	</div>
+	      	<span ng-show="form.collectionForm.name.$touched && form.collectionForm.name.$invalid" class="error-msg">Required field</span>
+    	</div>
+  	</div>
+  	<div class="form-group">
+    	<div class="col-sm-12">
+    		<div class="input-group">
+	         	<span class="input-group-addon"><i class="fa fa-map-marker input-control-icon"></i></span>
+	         	<textarea class="form-control" placeholder="Description" title="Collection Description" rows="5" maxlength="1000" ng-model="collection.description"></textarea>	         	
+	      	</div>
+    	</div>
+  	</div>
+  	<div class="form-group">
+    	<div class="col-sm-12">
+    		<div class="input-group" show-errors="{ showSuccess: true }">
+    			<span class="input-group-addon"><i class="fa fa-balance-scale input-control-icon"></i></span>
+    			<select name="collectionType" title="Collection Type" class="selectpicker show-tick form-control selectpicker_default_bg"  
+	    			data-live-search="true"  
+    				ng-model="collection.collectionType" 
+    				ng-options="collectionType.name for collectionType in collectionTypes track by collectionType.id" 
+    				ng-change="query.property_name=collectionType.name" required>
+				    <option value="">-</option>
+				</select>
+				<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>
+	         	<!-- <span class="input-group-addon"><i class="fa fa-balance-scale input-control-icon"></i></span>		         	
+	         	<select class="selectpicker show-tick form-control selectpicker_default_bg" data-style="" 
+	    			data-live-search="true" title="Collection Type" id="collectionType" name="collectionType" 
+	    			ng-model="collection.collectionType.id" required>
+	    			<option ng-repeat="collectionType in collectionTypes" value="{{ collectionType.id }}">{{ collectionType.name }}</option>									
+				</select>					
+				<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>	   -->
+			</div>	
+			<span ng-show="form.collectionForm.collectionType.$touched && form.collectionForm.collectionType.$invalid" class="error-msg">Required field</span>
+    	</div>
+  	</div>	
+</form>
+
+<script type="text/javascript"  src="/js/default/init-form-controls.js"></script>	

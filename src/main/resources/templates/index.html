@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" ng-app="rollStockApp">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>RollStock Warehouse</title>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<link rel='shortcut icon' href='/images/favicon.ico' type='image/x-icon'/>
+
+	<!-- Bootstrap Core CSS -->
+	<link rel="stylesheet" href="/vendor/bootstrap-3.3.7/css/bootstrap.min.css"/>
+
+	<!-- Custom Fonts -->
+    <link rel="stylesheet" href="/vendor/font-awesome-4.7.0/css/font-awesome.min.css"/>
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<!-- DEFAULT -->
+	<link href="/css/default.css" rel="stylesheet"/>
+	
+	<!-- TEMPLATE -->	
+	<link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet"/>
+	<link href="/vendor/sb-admin-css/sb-admin-2.css" rel="stylesheet"/>
+	
+	<!-- PLUGINS -->
+	<!-- DataTables -->
+	<link href="/vendor/angular-datatables/css/angular-datatables.css" rel="stylesheet"/>
+	<link href="/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet"/>
+	<!-- <link href="/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet"/>-->
+	<!-- <link href="/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet"/> -->
+	<!-- Message Handling -->	
+	<link href="/vendor/sweet-alert/sweetalert.css" rel="stylesheet"/>	
+	<link href="/css/vendor-override.css" rel="stylesheet"/>
+	<!-- Form -->
+	<link href="/vendor/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet"/>
+	<link href="/vendor/kartik-bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet"/>
+	
+	<!-- <base href="/"/> -->
+	
+</head>
+<body ng-controller="MainController">
+	
+	<div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/"><i class="fa fa-superpowers fa-fw"></i>  RollStock Warehouse</a>             
+            </div>
+            
+            <div ng-include="'fragment/header-controls.html'"></div>
+
+            <div class="navbar-default sidebar in" role="navigation" ng-controller="SideBarController">
+				<div class="sidebar-nav navbar-collapse">
+			    	<ul class="nav in" id="side-menu">
+			        	<li class="sidebar-search">
+			            	<div class="input-group custom-search-form">
+			                	<input type="text" class="form-control" placeholder="Search..." disabled="disabled"/>
+			                   	<span class="input-group-btn">
+				                   	<button class="btn btn-default" type="button" disabled="disabled">
+				                    	<i class="fa fa-search"></i>
+				                   	</button>
+			               		</span>
+			               </div>
+			        	</li>
+			        	<li>
+			            	<a style="color:grey;"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+			            	<!-- <a href="#dashboard" ng-class="{ active: isActive('/dashboard') }"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a> -->
+			        	</li>
+			        	<li>
+			        		<a style="color:grey;"><i class="fa fa-calendar fa-fw"></i> Schedules</a>
+			            	<!-- <a href="#schedules" ng-class="{ active: isActive('/schedules') }"><i class="fa fa-calendar fa-fw"></i> Schedules</a> -->
+			        	</li>
+			        	<li>
+	            			<a href="#van_inspection" ng-class="{ active: isActive('/van_inspection') }">
+	            			<i class="fa fa-truck fa-fw"></i> Truck / Van Inspection</a>
+	        			</li> 
+			        	<li>
+			            	<a href="#">
+			            	<i class="fa fa-cubes fa-fw"></i> Stock<span class="fa arrow"></span></a>
+			            	<ul class="nav nav-second-level collapse">			            							        	
+			            		<li>
+			            			<a href="#receiving" ng-class="{ active: isActive('/receiving') }"><i class="fa fa-download fa-fw"></i> Receiving</a>
+			        			</li> 			            		
+			        			<li>
+			            			<a href="#storage" ng-class="{ active: isActive('/storage') }"><i class="glyphicon glyphicon-equalizer"></i> Storage</a>
+			        			</li>
+					        	<li>					        	 
+					        	 	<a style="color:grey;"><i class="fa fa-random fa-fw"></i> Issuance / Utilization</a>
+			            			<!-- <a href="#issuance" ng-class="{ active: isActive('/issuance') }"><i class="fa fa-random fa-fw"></i> Issuance / Utilization</a> -->
+			        			</li>         			    
+					        	<li>
+					        		<a style="color:grey;"><i class="fa fa-binoculars fa-fw"></i> Monitoring</a>
+			            			<!-- <a href="#monitoring" ng-class="{ active: isActive('/monitoring') }"><i class="fa fa-binoculars fa-fw"></i> Monitoring</a> -->
+			        			</li>			             
+				            </ul>
+			        	</li>
+				        <li>				        	
+				        	<a style="color:grey;"><i class="fa fa-paper-plane fa-fw"></i> Shipment</a>
+				            <!-- <a href="#delivery" ng-class="{ active: isActive('/delivery') }"><i class="fa fa-paper-plane fa-fw"></i> Shipment</a> -->
+				        </li>
+			        	<li>
+			            	<a href="#"><i class="fa fa-database fa-fw"></i> Masterfile<span class="fa arrow"></span></a>
+			            	<ul class="nav nav-second-level collapse">
+								<li>
+			            			<a href="#descriptions" ng-class="{ active: isActive('/descriptions') }"><i class="fa fa-braille fa-fw"></i> Roll Descriptions</a>
+			        			</li>   
+			        			<!-- <li>
+			            			<a href="#units" ng-class="{ active: isActive('/units') }"><i class="fa fa-tags fa-fw"></i> Units</a>
+			        			</li>  -->         			    			
+				                <li>
+				                    <a href="#suppliers" ng-class="{ active: isActive('/suppliers') }"><i class="fa fa-bookmark fa-fw"></i> Suppliers</a>
+				                </li>
+				                <li>
+				                    <a href="#customers" ng-class="{ active: isActive('/customers') }"><i class="fa fa-tty fa-fw"></i> Customers</a>
+				                </li>	
+				                <li>
+				                    <a href="#truckers" ng-class="{ active: isActive('/truckers') }"><i class="fa fa-truck fa-fw"></i> Truckers</a>
+				                </li>
+				                <li>
+				                    <a href="#workers" ng-class="{ active: isActive('/workers') }"><i class="fa fa-group fa-fw"></i> Workers</a>
+				                </li>
+				                <li>
+				                    <a href="#"><i class="fa fa-street-view fa-fw"></i> Locations<span class="fa arrow"></span></a>
+				                    <ul class="nav nav-third-level collapse">
+										<li>
+					            			<a href="#warehouses" ng-class="{ active: isActive('/warehouses') }"><i class="fa fa-home fa-fw"></i> Warehouses</a>
+					        			</li>   
+					        			<li>
+						                    <a href="#bins" ng-class="{ active: isActive('/bins') }"><i class="fa fa-braille fa-fw"></i> Bins</a>
+						                </li>
+						            </ul>    
+				                </li>		               
+				            </ul>
+				        </li>				        
+				        <li>
+				            <a style="color:grey;"><i class="fa fa-newspaper-o fa-fw"></i> Reports<span class="fa arrow"></span></a>
+				            <ul class="nav nav-second-level collapse">
+				                <li>
+				                    <a style="color:grey;">Report 1</a>
+				                </li>
+				                <li>
+				                    <a style="color:grey;">Report 2</a>
+				                </li>		
+				            </ul>
+				        </li>
+				        <li>
+				            <a style="color:grey;"><i class="fa fa-wrench fa-fw"></i> Utilities<span class="fa arrow"></span></a>
+				            <ul class="nav nav-second-level collapse">
+				                <li>
+				                    <a style="color:grey;">Tool 1</a>
+				                </li>
+				                <li>
+				                    <a style="color:grey;">Tool 2</a>
+				                </li>		
+				            </ul>
+				        </li>
+			    	</ul>
+				</div>
+			</div>
+            
+        </nav>
+
+        <!-- MAIN CONTENT AND INJECTED VIEWS -->
+	   	<div id="page-wrapper" class="ng-view" >
+		   	<!-- angular templating -->
+		    <!-- this is where content will be injected -->
+	    </div>
+	
+		<!-- <div ng-include="'fragment/footer.html'"></div> -->
+		
+    </div>
+    <!-- /#wrapper -->
+    	
+	<!-- SCROLLS -->
+    <script src="/vendor/jquery.min-3.1.1.js"></script>
+	<script src="/vendor/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	
+	<!-- SPELLS -->
+    <script type="text/javascript" src="/vendor/angular.min-1.5.8.js"></script>
+	<script type="text/javascript" src="/vendor/angular-route-1.4.8.js"></script>
+	<script type="text/javascript" src="/vendor/ui-bootstrap.min-2.1.4.js"></script>
+	<script type="text/javascript" src="/vendor/ng-file-upload.min.js"></script>
+	<script type="text/javascript" src="/vendor/angular-base64-upload.min.js"></script>
+		
+	<!-- TEMPLATE -->
+	<script src="/vendor/metisMenu/metisMenu.js"></script>
+	<script src="/vendor/sb-admin-js/sb-admin-2.js"></script>	
+	<script src="/vendor/ui-bootstrap-tpls.min-2.1.4.js"></script>
+		
+	<!-- PLUGINS -->
+	<!-- DataTables JavaScript -->
+	<script src="/vendor/angular-datatables/angular-datatables.min.js"></script>
+    <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/vendor/datatables/js/fnReloadAjax.js"></script>
+    <script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <!-- <script src="/vendor/datatables-responsive/dataTables.responsive.js"></script> -->
+    <!-- Message Handling -->
+    <script type="text/javascript" src="/vendor/sweet-alert/sweetalert.min.js"></script>
+    <script type="text/javascript" src="/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+    <script type="text/javascript" src="/vendor/bootbox.min.js"></script>
+    <!-- Form -->
+	<script type="text/javascript" src="/vendor/bootstrap-maxlength/bootstrap-maxlength.js"></script>
+	<script type="text/javascript" src="/vendor/show-errors/showErrors.min.js"></script>
+	<script type="text/javascript" src="/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+	<script type="text/javascript" src="/vendor/kartik-bootstrap-fileinput/js/fileinput.min.js"></script>
+	
+	<!-- DEFAULT -->
+	<script type="text/javascript" src="/js/app.js"></script>
+	<script type="text/javascript" src="/js/default/common.js"></script>
+	<!-- Controllers and Services -->
+	<script type="text/javascript"  src="/js/controller/common-controller.js"></script>
+	
+	<script type="text/javascript"  src="/js/service/van-inspection-service.js"></script>
+	<script type="text/javascript"  src="/js/controller/van-inspection-controller.js"></script>
+	
+	<script type="text/javascript"  src="/js/controller/van-gallery-controller.js"></script>
+	
+	<script type="text/javascript"  src="/js/service/file-service.js"></script>
+	<script type="text/javascript"  src="/js/service/van-image-service.js"></script>
+	
+	<script type="text/javascript"  src="/js/service/receipt-service.js"></script>
+	<script type="text/javascript"  src="/js/controller/receiving-controller.js"></script>
+	<script type="text/javascript"  src="/js/controller/receipt-controller.js"></script>
+	
+	<script type="text/javascript"  src="/js/service/ticket-service.js"></script>
+	<script type="text/javascript"  src="/js/controller/ticket-controller.js"></script>
+	
+	<script type="text/javascript"  src="/js/service/roll-service.js"></script>
+	
+	<script type="text/javascript"  src="/js/service/storage-service.js"></script>
+	<script type="text/javascript"  src="/js/controller/storage-controller.js"></script>
+	
+	<script type="text/javascript"  src="/js/service/description-service.js"></script>
+	<script type="text/javascript"  src="/js/controller/description-controller.js"></script>
+	
+	<script type="text/javascript"  src="/js/service/supplier-service.js"></script>
+	<script type="text/javascript"  src="/js/controller/supplier-controller.js"></script>
+	
+	<script type="text/javascript"  src="/js/service/customer-service.js"></script>
+	<script type="text/javascript"  src="/js/controller/customer-controller.js"></script>
+	
+	<script type="text/javascript"  src="/js/service/trucker-service.js"></script>
+	<script type="text/javascript"  src="/js/controller/trucker-controller.js"></script>
+	
+	<script type="text/javascript"  src="/js/service/worker-service.js"></script>
+	<script type="text/javascript"  src="/js/controller/worker-controller.js"></script>
+	
+	<script type="text/javascript"  src="/js/service/warehouse-service.js"></script>
+	<script type="text/javascript"  src="/js/controller/warehouse-controller.js"></script>
+	
+	<script type="text/javascript"  src="/js/controller/warehouse-bin-controller.js"></script>
+	
+	<script type="text/javascript"  src="/js/service/stock-service.js"></script>
+	
+	<script type="text/javascript"  src="/js/service/bin-service.js"></script>
+	<script type="text/javascript"  src="/js/controller/bin-controller.js"></script>
+		
+	<script>
+		$(document).ready(function() {
+			$('[data-toggle="tooltip"]').tooltip(); // activate  tooltip everywhere
+		});
+	</script>	
+		
+</body>
+</html>

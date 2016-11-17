@@ -1,0 +1,36 @@
+.modal-header { /* override class */ 
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #369;
+    color:#FFF;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+
+.dataTables_filter {
+	display: none; 
+}
+
+.paginate_button {
+	float: left;
+    cursor: pointer;
+    margin: 0;
+    padding: 0 !important;
+    position: relative;
+    text-align: center;
+    text-decoration: none !important;
+}
+
+/* .dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding : 0px;
+    margin-left: 0px;
+    display: inline;
+    border: 0px;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    border: 0px;
+} */

@@ -1,0 +1,40 @@
+<div class="row">
+	<div class="col-lg-12">
+		<table id="itemTable" datatable="ng" dt-instance="dtInstance" width="100%" class="table table-striped table-bordered table-hover">
+			 <thead>
+	               <tr>                 
+	               	   <th>Description</th>
+	                   <th>Part</th>
+	                   <th>Roll #</th>
+	                   <th>GSM</th>
+	                   <th>Trim</th>
+	                   <th>Weight (Kg)</th>
+	                   <th>Lineal</th>
+	                   <th>Action</th>
+	               </tr>
+			</thead>
+	        <tbody>    
+	        	<tr ng-repeat="entry in entries">
+	        		<td>
+	        			{{ entry.description.text }}	
+	        			<div class="text_note">{{ entry.remarks }}</div>        		
+	        		</td>
+	        		<td>{{ entry.part.name }}</td>
+	        		<td>{{ entry.rollNumber }}</td>
+	        		<td>{{ entry.grade }}</td>
+	        		<td>{{ entry.sized }}</td>
+	        		<td>{{ entry.weight }}</td>	        		
+	        		<td>{{ entry.lineal }}</td>
+	        		<td>
+		               <button type="button" class="btn btn-default btn-sm custom-button-default" title="Edit" ng-click="edit($index, entry)"> 
+		                	<i class="fa fa-pencil"></i>
+		               </button>		                                	                   	
+		               <button type="button" class="btn btn-default btn-sm" title="Delete" ng-click="delete($index);"> 
+		                	<i class="fa fa-times delete-color"></i>
+		               </button>
+	               </td>
+	        	</tr>   	        	   
+	       </tbody>			       
+	       </table>
+	</div>
+</div>	

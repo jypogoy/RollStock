@@ -1,0 +1,60 @@
+<form name="form.binForm" class="form-horizontal" novalidate>
+	<div class="form-group" show-errors="{ showSuccess: true }">
+    	<div class="col-sm-12">
+    		<div class="input-group">
+	         	<span class="input-group-addon"><i class="fa fa-connectdevelop input-control-icon"></i></span>
+	         	<input type="text" class="form-control" id="name" name="name" placeholder="Name" 
+	         		title="Bin Name" ng-model="bin.name" autofocus required>
+	         	<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>
+	      	</div>
+	      	<span ng-show="form.binForm.name.$touched && form.binForm.name.$invalid" class="error-msg">Required field</span>
+    	</div>
+  	</div>
+  	<div class="form-group">
+    	<div class="col-sm-4">
+    		<div class="input-group" show-errors="{ showSuccess: true }">
+	         	<span class="input-group-addon">L</span>
+	         	<input type="number" class="form-control" name="length" placeholder="Length" 
+	         		title="Bin Length" ng-model="bin.length" autofocus required>
+	         	<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>
+	      	</div>
+	      	<span ng-show="form.binForm.length.$touched && form.binForm.length.$invalid" class="error-msg">Required field</span>
+    	</div>
+    	<div class="col-sm-4">
+    		<div class="input-group" show-errors="{ showSuccess: true }">
+	         	<span class="input-group-addon">W</span>
+	         	<input type="number" class="form-control" name="width" placeholder="Width" 
+	         		title="Bin Width" ng-model="bin.width" autofocus required>
+	         	<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>
+	      	</div>
+	      	<span ng-show="form.binForm.width.$touched && form.binForm.width.$invalid" class="error-msg">Required field</span>
+    	</div>
+    	<div class="col-sm-4">
+    		<div class="input-group" show-errors="{ showSuccess: true }">
+	         	<span class="input-group-addon">H</span>
+	         	<input type="number" class="form-control" name="height" placeholder="Height" 
+	         		title="Bin Height" ng-model="bin.height" autofocus required>
+	         	<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>
+	      	</div>
+	      	<span ng-show="form.binForm.height.$touched && form.binForm.height.$invalid" class="error-msg">Required field</span>
+    	</div>
+  	</div>
+  	<div class="form-group">
+    	<div class="col-sm-12">
+    		<div class="input-group" show-errors="{ showSuccess: true }">
+    			<span class="input-group-addon"><i class="fa fa-home input-control-icon"></i></span>
+    			<select id="warehouse" name="warehouse" title="Warehouse" class="selectpicker show-tick form-control selectpicker_default_bg"  
+	    			data-live-search="true"  
+    				ng-model="bin.warehouse" 
+    				ng-options="warehouse.name for warehouse in warehouses track by warehouse.id" 
+    				ng-change="query.property_name=warehouse.name" required>
+				    <option value="" title="Warehouse" disabled>-</option>
+				</select>
+				<span class="input-group-addon"><i class="fa fa-asterisk required-icon"></i></span>	         	
+			</div>	
+			<span ng-show="form.binForm.warehouse.$touched && form.binForm.warehouse.$invalid" class="error-msg">Required field</span>
+    	</div>
+  	</div>	
+</form>
+
+<script type="text/javascript"  src="/js/default/init-form-controls.js"></script>	

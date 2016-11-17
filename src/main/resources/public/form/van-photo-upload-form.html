@@ -1,0 +1,12 @@
+<form name="form.vanInspectionForm" class="form-horizontal" novalidate>
+	<div class="form-group" show-errors="{ showSuccess: true }">
+    	<div class="col-sm-12">
+   		 	<div class="input-group">
+	         	<label class="btn btn-info btn-file">
+				    <i class="fa fa-folder-open-o"></i> Browse <input type="file" style="display: none;">
+				</label>
+			</div>	
+			<span ng-show="form.vanInspectionForm.trucker.$touched && form.vanInspectionForm.trucker.$invalid" class="error-msg">Required field</span>
+      	</div>
+  	</div>  	
+</form>  	
